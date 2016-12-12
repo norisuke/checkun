@@ -12,6 +12,9 @@ $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
 //ReplyToken取得
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
+//エラーログ
+error_log('message', 3, '/Users/Yoshinori/Desktop/app.log');
+
 //メッセージ以外のときは何も返さず終了
 if($type != "text"){
 	exit;
