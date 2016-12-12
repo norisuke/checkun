@@ -21,19 +21,19 @@ if($type != "text"){
 if (strstr($text, 'チェッ君') ) {
   $response_format_text = [
     "type" => "template",
-    "altText" => "精算申請があるのですね。",
+    "altText" => "みくりさん、精算申請があるのですね。",
     "template" => [
         "type" => "confirm",
         "text" => "みくりさん、精算申請があるのですね。",
         "actions" => [
             [
               "type" => "message",
-              "label" => "はい",
+              "label" => "はい、あるんです。",
               "text" => "はい、あるんです。"
             ],
             [
               "type" => "message",
-              "label" => "いいえ",
+              "label" => "いいえ、ありません。",
               "text" => "いいえ、ありません。"
             ]
         ]
