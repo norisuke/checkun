@@ -18,40 +18,61 @@ if($type != "text"){
 }
 
 //返信データ作成
-if ($text == 'はい') {
+if (strstr($text, 'チェッ君') ) {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こちらの〇〇はいかがですか？",
+    "altText" => "精算申請があるのですね。",
+    "template" => [
+        "type" => "confirm",
+        "text" => "みくりさん、精算申請があるのですね。",
+        "actions" => [
+            [
+              "type" => "message",
+              "label" => "はい",
+              "text" => "はい、あるんです。"
+            ],
+            [
+              "type" => "message",
+              "label" => "いいえ",
+              "text" => "いいえ、ありません。"
+            ]
+        ]
+    ]
+  ];
+} else if ($text == 'はい、あるんです。') {
+  $response_format_text = [
+    "type" => "template",
+    "altText" => "精算項目はなんでしょうか？",
     "template" => [
       "type" => "buttons",
-      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img1.jpg",
-      "title" => "○○レストラン",
-      "text" => "お探しのレストランはこれですね",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/mikuri1.jpg",
+      "title" => "みくりさんは何にお金を使ったのですか？",
+      "text" => "精算項目はなんでしょうか？",
       "actions" => [
           [
-            "type" => "postback",
-            "label" => "予約する",
-            "data" => "action=buy&itemid=123"
-          ],
-          [
-            "type" => "postback",
-            "label" => "電話する",
-            "data" => "action=pcall&itemid=123"
-          ],
-          [
-            "type" => "uri",
-            "label" => "詳しく見る",
-            "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
+            "type" => "message",
+            "label" => "飲食・軽食代",
+            "data" => "飲食・軽食代です！"
           ],
           [
             "type" => "message",
-            "label" => "違うやつ",
-            "text" => "違うやつお願い"
+            "label" => "備品代",
+            "data" => "備品代です！"
+          ],
+          [
+            "type" => "message",
+            "label" => "ガソリン代",
+            "uri" => "備品代です！"
+          ],
+          [
+            "type" => "message",
+            "label" => "雇用主でも聞いていいことと悪いことがあると思います",
+            "text" => "雇用主でも聞いていいことと悪いことがあると思います"
           ]
       ]
     ]
   ];
-} else if ($text == 'いいえ') {
+} else if ($text == 'いいえ、ありません。') {
   exit;
 } else if ($text == '違うやつお願い') {
   $response_format_text = [
@@ -130,26 +151,7 @@ if ($text == 'はい') {
     ]
   ];
 } else {
-  $response_format_text = [
-    "type" => "template",
-    "altText" => "みくりさん、精算ですか？（はい／いいえ）",
-    "template" => [
-        "type" => "confirm",
-        "text" => "みくりさん、精算ですか？",
-        "actions" => [
-            [
-              "type" => "message",
-              "label" => "はい",
-              "text" => "はい"
-            ],
-            [
-              "type" => "message",
-              "label" => "いいえ",
-              "text" => "いいえ"
-            ]
-        ]
-    ]
-  ];
+  exit;
 }
 
 $post_data = [
