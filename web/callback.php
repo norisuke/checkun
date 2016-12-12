@@ -48,7 +48,7 @@ if (strstr($text, 'チェッ君') ) {
     "altText" => "精算項目はなんでしょうか？",
     "template" => [
       "type" => "buttons",
-      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/mikuri1.jpg",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img1.jpg",
       "title" => "みくりさんは何にお金を使ったのですか？",
       "text" => "精算項目はなんでしょうか？",
       "actions" => [
