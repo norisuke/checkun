@@ -39,7 +39,7 @@ if (strstr($text, 'チェッ君') ) {
         ]
     ]
   ];
-} else if ($text == 'はい、あるんです。') {
+} else if (strstr($text, 'はい') {
   $response_format_text = [
     "type" => "template",
     "altText" => "精算項目はなんでしょうか？",
