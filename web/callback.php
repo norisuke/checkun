@@ -12,9 +12,6 @@ $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
 //ReplyToken取得
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
-//エラーログ
-error_log('message', 3, '/Users/Yoshinori/Desktop/app.log');
-
 //メッセージ以外のときは何も返さず終了
 if($type != "text"){
 	exit;
@@ -42,30 +39,30 @@ if (strstr($text, 'チェッ君') ) {
         ]
     ]
   ];
-} else if (strstr($text, 'はい、あるんです。') {
+} else if ($text == 'はい、あるんです。') {
   $response_format_text = [
     "type" => "template",
     "altText" => "精算項目はなんでしょうか？",
     "template" => [
       "type" => "buttons",
-      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img1.jpg",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/mikuri1.jpg",
       "title" => "みくりさんは何にお金を使ったのですか？",
       "text" => "精算項目はなんでしょうか？",
       "actions" => [
           [
             "type" => "message",
             "label" => "飲食・軽食代",
-            "text" => "飲食・軽食代です！"
+            "data" => "飲食・軽食代です！"
           ],
           [
             "type" => "message",
             "label" => "備品代",
-            "text" => "備品代です！"
+            "data" => "備品代です！"
           ],
           [
             "type" => "message",
             "label" => "ガソリン代",
-            "text" => "備品代です！"
+            "uri" => "備品代です！"
           ],
           [
             "type" => "message",
@@ -154,26 +151,7 @@ if (strstr($text, 'チェッ君') ) {
     ]
   ];
 } else {
-  $response_format_text = [
-    "type" => "template",
-    "altText" => "こんにちわ 何かご用ですか？（はい／いいえ）",
-    "template" => [
-        "type" => "confirm",
-        "text" => "こんにちわ 何かご用ですか？",
-        "actions" => [
-            [
-              "type" => "message",
-              "label" => "はい",
-              "text" => "はい"
-            ],
-            [
-              "type" => "message",
-              "label" => "いいえ",
-              "text" => "いいえ"
-            ]
-        ]
-    ]
-  ];
+  exit;
 }
 
 $post_data = [
