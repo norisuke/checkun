@@ -39,7 +39,7 @@ if (strstr($text, 'チェッ君') ) {
         ]
     ]
   ];
-} else if (strstr($response_format_text, 'はい、あるんです。') {
+} else if (strstr($text, 'はい、あるんです。') {
   $response_format_text = [
     "type" => "template",
     "altText" => "精算項目はなんでしょうか？",
@@ -52,17 +52,17 @@ if (strstr($text, 'チェッ君') ) {
           [
             "type" => "message",
             "label" => "飲食・軽食代",
-            "data" => "飲食・軽食代です！"
+            "text" => "飲食・軽食代です！"
           ],
           [
             "type" => "message",
             "label" => "備品代",
-            "data" => "備品代です！"
+            "text" => "備品代です！"
           ],
           [
             "type" => "message",
             "label" => "ガソリン代",
-            "uri" => "備品代です！"
+            "text" => "備品代です！"
           ],
           [
             "type" => "message",
